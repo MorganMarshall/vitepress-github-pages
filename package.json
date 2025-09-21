@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@unocss/vite": "^66.5.1",
     "vitepress": "^2.0.0-alpha.12"
   },
   "scripts": {
