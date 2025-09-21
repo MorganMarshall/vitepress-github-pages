@@ -29,7 +29,7 @@ A minimal, ready-to-deploy **VitePress** site with **GitHub Actions** preconfigu
 ### 1. Clone this repo
 
 ```
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/MorganMarshall/vitepress-github-pages.git
 cd YOUR_REPO
 ```
 
@@ -60,21 +60,14 @@ Push changes to the `main` branch. GitHub Actions will **automatically build and
 Your site will be live at:
 
 ```
-https://<USERNAME>.github.io/<REPO>/
+https://<username>.github.io/<repo>/
 ```
 
 ## ⚙️ Configuration
 
 * Edit `.vitepress/config.ts` for site title, theme, and navigation.
 * Update `index.md` and add additional pages in the root folder.
-* Place static assets in the `public/` folder.
 * GitHub Actions workflow is located at `.github/workflows/deploy.yml`.
-
-## 🧩 Customization Ideas
-
-* Add a custom domain via **GitHub Pages → Settings**.
-* Integrate analytics (Google Analytics, Plausible, etc.).
-* Extend or customize the VitePress theme.
 
 ## 📜 License
 
