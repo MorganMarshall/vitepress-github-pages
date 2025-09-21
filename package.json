@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "vite-plugin-purgecss": "^0.2.13",
     "vitepress": "^2.0.0-alpha.12"
   },
   "scripts": {

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import PurgeCSS from "vite-plugin-purgecss";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -37,5 +38,13 @@ export default defineConfig({
         },
       },
     },
+  },
+  vite: {
+    plugins: [
+      PurgeCSS({
+        content: ["./**/*.md", "./.vitepress/theme/**/*.vue"],
+        safelist: ["html", "body"], // classes you don't want removed
+      }),
+    ],
   },
 });
