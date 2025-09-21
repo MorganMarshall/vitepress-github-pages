@@ -7,8 +7,6 @@ export default defineConfig({
   title: "VitePress Github Pages",
   description: "Example",
   head: [
-    // Preload critical resources
-    ["link", { rel: "preload", href: "/assets/style.css", as: "style" }],
     // DNS prefetch for external resources
     ["link", { rel: "dns-prefetch", href: "https://fonts.googleapis.com" }],
     // Preconnect to critical origins
@@ -44,12 +42,14 @@ export default defineConfig({
       cssCodeSplit: true, // split CSS into smaller chunks
       rollupOptions: {
         output: {
-          // Better chunking strategy
-          manualChunks: {
-            "vue-vendor": ["vue"],
-            "vitepress-theme": ["vitepress/theme"],
+          // Only chunk non-external dependencies
+          manualChunks(id) {
+            // Group node_modules into vendor chunk
+            if (id.includes("node_modules")) {
+              return "vendor";
+            }
           },
-          // Reduce chunk size for better loading
+          // Better file naming for caching
           chunkFileNames: "assets/js/[name]-[hash].js",
           entryFileNames: "assets/js/[name]-[hash].js",
           assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
@@ -57,11 +57,6 @@ export default defineConfig({
       },
       // Optimize chunk sizes
       chunkSizeWarningLimit: 1000,
-    },
-    // Enable dependency pre-bundling optimizations
-    optimizeDeps: {
-      include: ["vue"],
-      exclude: ["vitepress"],
     },
   },
 });
