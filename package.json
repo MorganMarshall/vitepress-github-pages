@@ -6,7 +6,7 @@
   },
   "scripts": {
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "docs:build": "vitepress build && node build_scripts/optimize-css.js",
     "docs:preview": "vitepress preview"
   }
 }
