@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { UnCSS } from "vite-plugin-uncss";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -28,29 +29,44 @@ export default defineConfig({
     ],
   },
   vite: {
-    css: {
-      transformer: "lightningcss",
-      lightningcss: {
-        // Enable unused CSS elimination
-        unusedSymbols: ["*"],
-        // Modern browser targets for smaller output
-        targets: {
-          chrome: 90,
-          firefox: 90,
-          safari: 15,
-        },
-        // Additional optimizations
-        minify: true,
-        drafts: {
-          // Enable experimental features for better optimization
-          customMedia: true,
-        },
-      },
-    },
+    plugins: [
+      UnCSS({
+        // HTML files to analyze for used CSS
+        html: [".vitepress/dist/**/*.html"],
+        // Ignore patterns for dynamic classes
+        ignore: [
+          // VitePress specific patterns
+          /^\.vp-/,
+          /^\.VP/,
+          /^\.theme/,
+          /^\.dark/,
+          /^\.light/,
+          // Navigation and layout
+          /^\.nav/,
+          /^\.sidebar/,
+          /^\.hero/,
+          /^\.home/,
+          /^\.feature/,
+          /^\.outline/,
+          // Interactive states
+          /hover/,
+          /focus/,
+          /active/,
+          /:not/,
+          // Code highlighting
+          /^\.language-/,
+          /^\.token/,
+          // Vue transition classes
+          /^\..*-enter/,
+          /^\..*-leave/,
+        ],
+        // Only run on build
+        apply: "build",
+      }),
+    ],
     build: {
       target: "esnext",
       cssCodeSplit: true,
-      cssMinify: "lightningcss",
     },
   },
 });
