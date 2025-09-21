@@ -28,17 +28,23 @@ export default defineConfig({
     ],
   },
   vite: {
-    build: {
-      target: "esnext", // modern JS reduces polyfills
-      cssCodeSplit: true, // split CSS into smaller chunks
-      minify: "esbuild", // fast minification
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) return "vendor";
-          },
+    css: {
+      transformer: "lightningcss",
+      lightningcss: {
+        // More conservative - only remove obviously unused CSS
+        unusedSymbols: [],
+        // Modern browser targets for smaller output
+        targets: {
+          chrome: 90,
+          firefox: 90,
+          safari: 15,
         },
       },
+    },
+    build: {
+      target: "esnext",
+      cssCodeSplit: true,
+      cssMinify: "lightningcss", // Use Lightning CSS for minification only
     },
   },
 });
