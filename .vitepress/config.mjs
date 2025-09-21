@@ -1,5 +1,4 @@
 import { defineConfig } from "vitepress";
-import { UnCSS } from "vite-plugin-uncss";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -29,44 +28,16 @@ export default defineConfig({
     ],
   },
   vite: {
-    plugins: [
-      UnCSS({
-        // HTML files to analyze for used CSS
-        html: [".vitepress/dist/**/*.html"],
-        // Ignore patterns for dynamic classes
-        ignore: [
-          // VitePress specific patterns
-          /^\.vp-/,
-          /^\.VP/,
-          /^\.theme/,
-          /^\.dark/,
-          /^\.light/,
-          // Navigation and layout
-          /^\.nav/,
-          /^\.sidebar/,
-          /^\.hero/,
-          /^\.home/,
-          /^\.feature/,
-          /^\.outline/,
-          // Interactive states
-          /hover/,
-          /focus/,
-          /active/,
-          /:not/,
-          // Code highlighting
-          /^\.language-/,
-          /^\.token/,
-          // Vue transition classes
-          /^\..*-enter/,
-          /^\..*-leave/,
-        ],
-        // Only run on build
-        apply: "build",
-      }),
-    ],
     build: {
-      target: "esnext",
-      cssCodeSplit: true,
+      target: "esnext", // modern JS reduces polyfills
+      cssCodeSplit: true, // split CSS into smaller chunks
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules")) return "vendor";
+          },
+        },
+      },
     },
   },
 });
