@@ -31,20 +31,26 @@ export default defineConfig({
     css: {
       transformer: "lightningcss",
       lightningcss: {
-        // More conservative - only remove obviously unused CSS
-        unusedSymbols: [],
+        // Enable unused CSS elimination
+        unusedSymbols: ["*"],
         // Modern browser targets for smaller output
         targets: {
           chrome: 90,
           firefox: 90,
           safari: 15,
         },
+        // Additional optimizations
+        minify: true,
+        drafts: {
+          // Enable experimental features for better optimization
+          customMedia: true,
+        },
       },
     },
     build: {
       target: "esnext",
       cssCodeSplit: true,
-      cssMinify: "lightningcss", // Use Lightning CSS for minification only
+      cssMinify: "lightningcss",
     },
   },
 });
