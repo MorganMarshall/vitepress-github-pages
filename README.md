@@ -18,7 +18,6 @@ A minimal, ready-to-deploy **VitePress** site with **GitHub Actions** preconfigu
 │       └── deploy.yml   # GitHub Actions workflow for Pages
 ├── .vitepress/
 │   └── config.ts        # VitePress configuration
-├── public/              # Static assets
 ├── index.md             # Home page
 ├── package.json
 └── README.md
