@@ -27,17 +27,4 @@ export default defineConfig({
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
     ],
   },
-  vite: {
-    build: {
-      target: "esnext", // modern JS reduces polyfills
-      cssCodeSplit: true, // split CSS into smaller chunks
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) return "vendor";
-          },
-        },
-      },
-    },
-  },
 });
