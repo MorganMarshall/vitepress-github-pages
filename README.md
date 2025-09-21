@@ -70,7 +70,7 @@ https://<username>.github.io/<repo>/
 
 ## 📜 License
 
-MIT © [Morgan Marshall](https://github.com/MorganMarshall)
+MIT © [https://github.com/MorganMarshall/LICENSE](https://github.com/MorganMarshall/LICENSE)
 
 ---
 
