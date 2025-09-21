@@ -39,12 +39,10 @@ export default defineConfig({
       },
     },
   },
-  vite: {
     plugins: [
       PurgeCSS({
         content: ["./**/*.md", "./.vitepress/theme/**/*.vue"],
         safelist: ["html", "body"], // classes you don't want removed
       }),
     ],
-  },
 });
