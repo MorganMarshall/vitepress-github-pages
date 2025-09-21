@@ -71,7 +71,7 @@ https://<username>.github.io/<repo>/
 
 ## 📜 License
 
-MIT © [Your Name](https://github.com/YOUR_USERNAME)
+MIT © [Morgan Marshall](https://github.com/MorganMarshall)
 
 ---
 
