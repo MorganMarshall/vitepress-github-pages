@@ -30,7 +30,7 @@ A minimal, ready-to-deploy **VitePress** site with **GitHub Actions** preconfigu
 
 ```
 git clone https://github.com/MorganMarshall/vitepress-github-pages.git
-cd YOUR_REPO
+cd vitepress-github-pages
 ```
 
 ### 2. Install dependencies
