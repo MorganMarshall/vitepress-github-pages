@@ -29,38 +29,66 @@ export default defineConfig({
     ],
   },
   vite: {
-    plugins: [
-      PurgeCSS({
-        content: [
-          "./.vitepress/**/*.vue",
-          "./.vitepress/**/*.js",
-          "./**/*.md", // all markdown files in project
-          "./**/*.vue", // all vue files
-          "./index.md", // specifically include index
-          "./markdown-examples.md",
-          "./api-examples.md",
-        ],
-        safelist: [
-          // VitePress specific classes
-          /^vp-/,
-          /^VPDoc/,
-          /^outline/,
-          /^nav/,
-          /^sidebar/,
-          /^theme/,
-          // Common utility classes
-          /^container/,
-          /^content/,
-          // Code highlighting classes
-          /^language-/,
-          /^token/,
-          // Any other classes you want to preserve
-          "skip-link",
-        ],
-        // Only run during build
-        apply: "build",
-      }),
-    ],
+    // Temporarily comment out PurgeCSS to test
+    // plugins: [
+    //   PurgeCSS({
+    //     content: [
+    //       './.vitepress/**/*.vue',
+    //       './.vitepress/**/*.js',
+    //       './**/*.md', // all markdown files in project
+    //       './**/*.vue', // all vue files
+    //       './index.md', // specifically include index
+    //       './markdown-examples.md',
+    //       './api-examples.md'
+    //     ],
+    //     safelist: [
+    //       // VitePress core classes - be very permissive
+    //       /^vp-/,
+    //       /^VP/,
+    //       /^Layout/,
+    //       /^nav/,
+    //       /^sidebar/,
+    //       /^hero/,
+    //       /^home/,
+    //       /^feature/,
+    //       /^doc/,
+    //       /^content/,
+    //       /^container/,
+    //       /^outline/,
+    //       /^theme/,
+    //       /^dark/,
+    //       /^light/,
+    //       // CSS custom properties and root styles
+    //       /^:/,
+    //       /^html/,
+    //       /^body/,
+    //       /^\*/,
+    //       // Layout and structural classes
+    //       /^main/,
+    //       /^page/,
+    //       /^wrapper/,
+    //       /^grid/,
+    //       /^flex/,
+    //       // Typography and text classes
+    //       /^text/,
+    //       /^title/,
+    //       /^description/,
+    //       /^tagline/,
+    //       /^link/,
+    //       // Code and syntax highlighting
+    //       /^language-/,
+    //       /^token/,
+    //       /^pre/,
+    //       /^code/,
+    //       // Common utility classes
+    //       'skip-link',
+    //       'sr-only',
+    //       'visually-hidden'
+    //     ],
+    //     // Only run during build
+    //     apply: 'build'
+    //   })
+    // ],
     build: {
       target: "esnext", // modern JS reduces polyfills
       cssCodeSplit: true, // split CSS into smaller chunks
