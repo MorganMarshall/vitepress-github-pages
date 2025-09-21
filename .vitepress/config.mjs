@@ -34,9 +34,11 @@ export default defineConfig({
         content: [
           "./.vitepress/**/*.vue",
           "./.vitepress/**/*.js",
-          "./docs/**/*.md",
-          "./docs/**/*.vue",
-          "./*.md", // for root level markdown files
+          "./**/*.md", // all markdown files in project
+          "./**/*.vue", // all vue files
+          "./index.md", // specifically include index
+          "./markdown-examples.md",
+          "./api-examples.md",
         ],
         safelist: [
           // VitePress specific classes
